@@ -33,3 +33,11 @@ flutter:
   assets:
     - assets/
     - assets/app_logo/
+    - assets/fonts/
+
+  fonts:
+    - family: "Comfortaa"
+      fonts:
+        - asset: "assets/fonts/Comfortaa-700.ttf"
+          style: "normal"
+          weight: 700

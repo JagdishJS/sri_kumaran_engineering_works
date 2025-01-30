@@ -6,7 +6,7 @@ class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     primarySwatch: createMaterialColor(spearmint),
     scaffoldBackgroundColor: Colors.white,
-    fontFamily: 'Roboto',
+    fontFamily: 'Comfortaa',
     bottomNavigationBarTheme:
         BottomNavigationBarThemeData(backgroundColor: blackColor),
     iconTheme: IconThemeData(color: blackColor),
@@ -100,7 +100,7 @@ class AppTheme {
     primarySwatch: createMaterialColor(whiteColor),
     // blackColor: whiteColor,
     scaffoldBackgroundColor: whiteColor,
-    fontFamily: 'Roboto',
+    fontFamily: 'Comfortaa',
     bottomNavigationBarTheme:
         BottomNavigationBarThemeData(backgroundColor: whiteColor),
     iconTheme: IconThemeData(color: whiteColor),
