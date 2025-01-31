@@ -20,6 +20,7 @@ export './screens/dashboard.dart';
 export './screens/home.dart';
 export 'screens/sample_invoice.dart';
 export './screens/orders.dart';
+export './screens/order_detail.dart';
 
 
 

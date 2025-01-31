@@ -155,7 +155,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  order.name,
+                  order.orderId,
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
                 SizedBox(

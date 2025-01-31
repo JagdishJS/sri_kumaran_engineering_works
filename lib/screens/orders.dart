@@ -59,8 +59,19 @@ class _OrdersPageState extends State<OrdersPage> {
                             physics: ScrollPhysics(),
                             itemCount: commonController.orders.length,
                             itemBuilder: (context, index) {
-                              return ordersWidget(
-                                  commonController.orders[index]);
+                              return InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => OrderDetailScreen(
+                                            order: commonController
+                                                .orders[index])),
+                                  );
+                                },
+                                child: ordersWidget(
+                                    commonController.orders[index]),
+                              );
                             },
                           )
                         : Center(
@@ -94,7 +105,7 @@ class _OrdersPageState extends State<OrdersPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  order.name,
+                  order.orderId,
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
                 SizedBox(
