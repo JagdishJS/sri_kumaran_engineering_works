@@ -1,3 +1,7 @@
+import "dart:io";
+
+import "package:excel/excel.dart";
+
 import "../library.dart";
 
 class CommonController extends GetxController {
@@ -21,6 +25,39 @@ class CommonController extends GetxController {
     Order(
         name: "Lathe Machine", quantity: 1, price: 2000.0, status: "Completed"),
   ].obs;
+
+void exportOrdersToExcel(List<Order> orders) async {
+  var excel = Excel.createExcel(); 
+  var sheet = excel['Orders']; 
+
+  // Add Headers
+  sheet.appendRow([
+  TextCellValue("Product Name"),
+  TextCellValue("Quantity"),
+  TextCellValue("Price"),
+  TextCellValue("Status"),]);
+
+  // Add Order Data
+  for (var order in orders) {
+    sheet.appendRow([
+    TextCellValue(order.name), 
+    TextCellValue(order.quantity.toString()), 
+    TextCellValue(order.price.toString()), 
+    TextCellValue(order.status)]);
+  }
+
+  // Get Documents Directory
+  Directory? directory = Directory('/storage/emulated/0/Download');
+  String path = "${directory.path}/orders.xlsx";
+
+  // Save the Excel File
+  File file = File(path);
+  await file.writeAsBytes(excel.encode()!);
+
+  // Open the file
+  OpenFile.open(path);
+}
+
 }
 
 class Order {

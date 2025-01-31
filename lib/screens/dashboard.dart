@@ -1,3 +1,5 @@
+import 'package:sri_kumaran_engineering_works/screens/orders.dart';
+
 import '../library.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -24,6 +26,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   final List<Widget> _pages = [
     HomePage(),
+    OrdersPage(),
   ];
 
   @override
@@ -117,7 +120,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             .color), // You can change the color
                     title: Text('Orders',
                         style: Theme.of(context).textTheme.titleMedium),
-                    onTap: () => _onDrawerItemTapped(0),
+                    onTap: () => _onDrawerItemTapped(1),
                   ),
                   ListTile(
                     leading: Icon(Icons.inventory_outlined,
