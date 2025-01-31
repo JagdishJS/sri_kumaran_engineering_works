@@ -1,7 +1,8 @@
 import './library.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         'splashScreen': (BuildContext context) => const SplashScreen(),
         'dashboard': (BuildContext context) => DashboardScreen(),
+        'sampleInvoice': (BuildContext context) => SampleInvoicePage(),
       },
       initialRoute: "Splash",
     );

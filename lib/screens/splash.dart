@@ -8,7 +8,7 @@ class SplashScreen extends StatelessWidget {
     double dh = MediaQuery.of(context).size.height;
     double dw = MediaQuery.of(context).size.width;
 
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 2), () {
       Get.offAllNamed("dashboard");
     });
 

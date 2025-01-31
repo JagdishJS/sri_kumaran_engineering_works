@@ -5,8 +5,13 @@ class AppTheme {
 
   static final ThemeData lightTheme = ThemeData(
     primarySwatch: createMaterialColor(spearmint),
-    scaffoldBackgroundColor: Colors.white,
+    primaryColor: whiteColor,
+    scaffoldBackgroundColor: whiteColor,
     fontFamily: 'Comfortaa',
+    buttonTheme: ButtonThemeData(
+      buttonColor: celodon, // Default button color
+      textTheme: ButtonTextTheme.primary, // Button text color
+    ),
     bottomNavigationBarTheme:
         BottomNavigationBarThemeData(backgroundColor: blackColor),
     iconTheme: IconThemeData(color: blackColor),
@@ -97,10 +102,14 @@ class AppTheme {
   );
 
   static final ThemeData darkTheme = ThemeData(
-    primarySwatch: createMaterialColor(whiteColor),
-    // blackColor: whiteColor,
-    scaffoldBackgroundColor: whiteColor,
+    primarySwatch: createMaterialColor(spearmint),
+    primaryColor: blackColor,
+    scaffoldBackgroundColor: blackColor,
     fontFamily: 'Comfortaa',
+    buttonTheme: ButtonThemeData(
+      buttonColor: celodon, // Default button color
+      textTheme: ButtonTextTheme.primary, // Button text color
+    ),
     bottomNavigationBarTheme:
         BottomNavigationBarThemeData(backgroundColor: whiteColor),
     iconTheme: IconThemeData(color: whiteColor),

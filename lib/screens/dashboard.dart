@@ -128,6 +128,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         style: Theme.of(context).textTheme.titleMedium),
                     onTap: () => _onDrawerItemTapped(0),
                   ),
+                   ListTile(
+                    leading: Icon(Icons.contact_support_rounded,
+                        color: Theme.of(context)
+                            .iconTheme
+                            .color), // You can change the color
+                    title: Text('Profile',
+                        style: Theme.of(context).textTheme.titleMedium),
+                    onTap: () => _onDrawerItemTapped(0),
+                  ),
                 ],
               ),
             ),

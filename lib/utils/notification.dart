@@ -1,10 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
-
 import 'package:audioplayers/audioplayers.dart';
 
 import '../library.dart';
-
 
 class PushNotificationService {
   final FirebaseMessaging _fcm = FirebaseMessaging.instance;
@@ -25,7 +22,7 @@ class PushNotificationService {
 
     // Handle foreground messages
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print('Received message: ${message}');
+      print('Received message: $message');
 
       if (message.data['type'] == 'voice_call') {
         voiceCallNotification(message: message);
@@ -143,7 +140,6 @@ class NotificationService {
     } else if (notificationResponse.actionId == "reject_video_call") {
       print("Vide Call Rejected");
     }
-
   }
 
   callNotificationDetails() {
@@ -167,7 +163,7 @@ class NotificationService {
             actions: <AndroidNotificationAction>[
               AndroidNotificationAction(
                 'accept_call', // Action ID
-                'Accept',  // Button Text
+                'Accept', // Button Text
                 showsUserInterface: true, // Show UI when pressed
               ),
               AndroidNotificationAction(
@@ -205,12 +201,14 @@ class NotificationService {
             actions: <AndroidNotificationAction>[
               AndroidNotificationAction(
                 'accept_video_call',
-                'Accept', titleColor: Colors.green,
+                'Accept',
+                titleColor: Colors.green,
                 showsUserInterface: true,
               ),
               AndroidNotificationAction(
                 'reject_video_call',
-                'Reject', titleColor: Colors.red,
+                'Reject',
+                titleColor: Colors.red,
                 showsUserInterface: true,
               ),
             ],
@@ -228,9 +226,10 @@ class NotificationService {
         payload: payLoad);
   }
 
-   Future showVideoCallNotification(
+  Future showVideoCallNotification(
       {int id = 0, String? title, String? body, String? payLoad}) async {
-    notificationsPlugin.show(id, title, body, await videoCallNotificationDetails(),
+    notificationsPlugin.show(
+        id, title, body, await videoCallNotificationDetails(),
         payload: payLoad);
   }
 }
