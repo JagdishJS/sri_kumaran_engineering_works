@@ -12,6 +12,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double dh = MediaQuery.of(context).size.height;
     double dw = MediaQuery.of(context).size.width;
+    final equipmentsController = Get.find<EquipmentsController>();
+    final ordersController = Get.find<OrdersController>();
     return GetBuilder<CommonController>(
         init: CommonController(),
         builder: (commonController) {
@@ -43,7 +45,9 @@ class _HomePageState extends State<HomePage> {
                                 .displayLarge!
                                 .copyWith(fontWeight: FontWeight.bold)),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed("equipmentsPage");
+                          },
                           child: Text("See All",
                               style: Theme.of(context).textTheme.displayMedium),
                         ),
@@ -53,10 +57,10 @@ class _HomePageState extends State<HomePage> {
                       height: dh * 0.1,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: commonController.equipments.length,
+                        itemCount: equipmentsController.equipments.length,
                         itemBuilder: (context, index) {
                           return equipmentsWidget(
-                              commonController.equipments[index]);
+                              equipmentsController.equipments[index]);
                         },
                       ),
                     ),
@@ -69,21 +73,23 @@ class _HomePageState extends State<HomePage> {
                                 .displayLarge!
                                 .copyWith(fontWeight: FontWeight.bold)),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed("ordersPage");
+                          },
                           child: Text("See All",
                               style: Theme.of(context).textTheme.displayMedium),
                         ),
                       ],
                     ),
-                    commonController.orders.isNotEmpty
+                    ordersController.orders.isNotEmpty
                         ? ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
                             physics: ScrollPhysics(),
-                            itemCount: commonController.orders.length,
+                            itemCount: ordersController.orders.length,
                             itemBuilder: (context, index) {
                               return ordersWidget(
-                                  commonController.orders[index]);
+                                  ordersController.orders[index]);
                             },
                           )
                         : Center(
@@ -99,10 +105,10 @@ class _HomePageState extends State<HomePage> {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
-                Get.offAllNamed("sampleInvoice");
+                Get.toNamed("sampleInvoice");
               },
               foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-              backgroundColor: celodon,
+              backgroundColor: Theme.of(context).cardColor,
               child: Icon(Icons.add_circle_outline_outlined),
             ),
             floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
@@ -110,7 +116,7 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
-  Container equipmentsWidget(equipment) {
+  Container equipmentsWidget(Equipments equipment) {
     double dh = MediaQuery.of(context).size.height;
     double dw = MediaQuery.of(context).size.width;
     return Container(
@@ -130,7 +136,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       child: Center(
-        child: Text(equipment,
+        child: Text(equipment.name!,
             maxLines: 2,
             textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,
@@ -139,12 +145,20 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Card ordersWidget(Order order) {
+  Card ordersWidget(OurOrders order) {
     double dh = MediaQuery.of(context).size.height;
     double dw = MediaQuery.of(context).size.width;
     return Card(
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.all(15),
       color: Theme.of(context).scaffoldBackgroundColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(5),
+          topRight: Radius.circular(5),
+          bottomLeft: Radius.circular(5),
+          bottomRight: Radius.circular(20),
+        ),
+      ),
       elevation: 5,
       child: Padding(
         padding: EdgeInsets.all(dh * 0.01),

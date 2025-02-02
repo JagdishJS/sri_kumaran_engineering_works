@@ -1,5 +1,3 @@
-import 'package:sri_kumaran_engineering_works/screens/orders.dart';
-
 import './library.dart';
 
 void main() async {
@@ -31,6 +29,11 @@ class MyApp extends StatelessWidget {
         'dashboard': (BuildContext context) => DashboardScreen(),
         'sampleInvoice': (BuildContext context) => SampleInvoicePage(),
         'ordersPage': (BuildContext context) => OrdersPage(),
+        'orderDetail': (BuildContext context) => OrderDetailScreen(),
+        'equipmentsPage': (BuildContext context) => EquipmentsListWidget(),
+        'equipmentsDetails': (BuildContext context) => EquipmentDetailsPage(),
+        'addEquipmentsDetails': (BuildContext context) =>
+            AddEquipmentDetailsPage(),
       },
       initialRoute: "Splash",
     );

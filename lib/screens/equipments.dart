@@ -1,22 +1,20 @@
-import 'package:flutter/material.dart';
-
 import '../library.dart';
 
-class OrdersPage extends StatefulWidget {
-  const OrdersPage({super.key});
+class EquipmentsListWidget extends StatefulWidget {
+  const EquipmentsListWidget({super.key});
 
   @override
-  State<OrdersPage> createState() => _OrdersPageState();
+  State<EquipmentsListWidget> createState() => _EquipmentsListWidgetState();
 }
 
-class _OrdersPageState extends State<OrdersPage> {
+class _EquipmentsListWidgetState extends State<EquipmentsListWidget> {
   @override
   Widget build(BuildContext context) {
     double dh = MediaQuery.of(context).size.height;
     double dw = MediaQuery.of(context).size.width;
-    return GetBuilder<OrdersController>(
-        init: OrdersController(),
-        builder: (ordersController) {
+    return GetBuilder<EquipmentsController>(
+        init: EquipmentsController(),
+        builder: (equipmentsController) {
           return PopScope(
               canPop: true,
               onPopInvokedWithResult: (bool didPop, Object? result) async {
@@ -29,16 +27,18 @@ class _OrdersPageState extends State<OrdersPage> {
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 appBar: AppBar(
                   backgroundColor: celodon,
-                  title: Text('Orders'),
+                  title: Text('Equipments'),
                   actions: [
                     IconButton(
                         onPressed: () {
-                          ordersController
-                              .exportOurOrdersToExcel(ordersController.orders);
+                          equipmentsController.exportEquipmentsToExcel(
+                              equipmentsController.equipments);
                         },
                         icon: Icon(Icons.download_for_offline_rounded)),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed("addEquipmentsDetails");
+                        },
                         icon: Icon(Icons.add_circle_outlined)),
                     SizedBox(width: dw * 0.05),
                   ],
@@ -49,21 +49,22 @@ class _OrdersPageState extends State<OrdersPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ordersController.orders.isNotEmpty
+                        equipmentsController.equipments.isNotEmpty
                             ? ListView.builder(
                                 scrollDirection: Axis.vertical,
                                 shrinkWrap: true,
                                 physics: ScrollPhysics(),
-                                itemCount: ordersController.orders.length,
+                                itemCount:
+                                    equipmentsController.equipments.length,
                                 itemBuilder: (context, index) {
                                   return InkWell(
                                     onTap: () {
-                                      Get.toNamed('orderDetail',
-                                          arguments:
-                                              ordersController.orders[index]);
+                                      Get.toNamed('equipmentsDetails',
+                                          arguments: equipmentsController
+                                              .equipments[index]);
                                     },
-                                    child: ordersWidget(
-                                        ordersController.orders[index]),
+                                    child: equipmentsWidget(
+                                        equipmentsController.equipments[index]),
                                   );
                                 },
                               )
@@ -82,7 +83,7 @@ class _OrdersPageState extends State<OrdersPage> {
         });
   }
 
-  Card ordersWidget(OurOrders order) {
+  Card equipmentsWidget(Equipments equipment) {
     double dh = MediaQuery.of(context).size.height;
     double dw = MediaQuery.of(context).size.width;
     return Card(
@@ -98,34 +99,39 @@ class _OrdersPageState extends State<OrdersPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  order.orderId,
+                  equipment.name!,
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
                 SizedBox(
                   height: dh * 0.01,
                 ),
                 Text(
-                  "Quantity: ${order.quantity}",
+                  "UID: ${equipment.uid}",
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
                 SizedBox(
                   height: dh * 0.01,
                 ),
                 Text(
-                  "Price: ₹${order.price}",
+                  "Current Stock: ${equipment.currentStock}",
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
+                SizedBox(
+                  height: dh * 0.01,
+                ),
+                Text(
+                  "Price: ₹${equipment.price}",
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
               ],
             ),
             Column(
               children: [
-                Text(order.status,
+                Text(equipment.status!,
                     style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                          color: order.status == "Completed"
+                          color: equipment.status == "Available"
                               ? Colors.green
-                              : order.status == "Shipped"
-                                  ? Colors.blue
-                                  : Colors.orange,
+                              : Colors.orange,
                         )),
                 SizedBox(height: 10),
                 ElevatedButton(

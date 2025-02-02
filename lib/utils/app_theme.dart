@@ -83,12 +83,24 @@ class AppTheme {
     cardColor: blackColor,
     dialogTheme: DialogTheme(shape: dialogShape()),
     appBarTheme: AppBarTheme(
-      color: blackColor,
+      foregroundColor: blackColor,
+      backgroundColor: blackColor,
+      surfaceTintColor: Colors.transparent,
       iconTheme: IconThemeData(color: blackColor),
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.light,
-        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.dark,
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: celodon,
+        shadowColor: green,
+        foregroundColor: green,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5), // Set border radius
+        ),
       ),
     ),
   ).copyWith(
@@ -182,9 +194,21 @@ class AppTheme {
     dialogTheme: DialogTheme(shape: dialogShape()),
     appBarTheme: AppBarTheme(
       backgroundColor: whiteColor,
+      surfaceTintColor: Colors.transparent,
       systemOverlayStyle: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.light,
         statusBarBrightness: Brightness.dark,
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: celodon,
+        shadowColor: green,
+        foregroundColor: green,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5), // Set border radius
+        ),
       ),
     ),
   ).copyWith(
