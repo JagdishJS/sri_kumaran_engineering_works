@@ -27,6 +27,7 @@ dependencies:
   excel: ^4.0.6
   open_file: ^3.5.10
   device_info_plus: ^9.0.0
+  googleapis_auth: ^1.6.0
   
 
 dev_dependencies:
@@ -48,6 +49,7 @@ flutter:
     - assets/
     - assets/app_logo/
     - assets/fonts/
+    - sri-kumaran-ew-firebase-adminsdk-fbsvc-489aa90508.json
 
   fonts:
     - family: "Comfortaa"

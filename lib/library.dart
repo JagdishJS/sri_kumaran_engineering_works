@@ -14,6 +14,7 @@ export 'dart:typed_data';
 export 'package:pdf/pdf.dart';
 export 'package:open_file/open_file.dart';
 export "package:device_info_plus/device_info_plus.dart";
+export 'package:googleapis_auth/auth_io.dart';
 
 // Screens
 export './screens/splash.dart';
@@ -26,10 +27,11 @@ export './screens/equipments.dart';
 export './screens/equipment_details.dart';
 
 // Controllers
-export './controllers/bindings.dart';
+export 'controllers/bindings.dart';
 export 'controllers/common_controller.dart';
 export 'controllers/equipments_controller.dart';
 export 'controllers/orders_controller.dart';
+export 'controllers/local_storage_controller.dart';
 
 // Utils
 export 'utils/app_theme.dart';

@@ -3,6 +3,14 @@ import './library.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  PushNotificationService().initialize();
+   await GetStorage.init();
+  await NotificationService().initNotification();
+  await Permission.notification.isDenied.then((value) {
+    if (value) {
+      Permission.notification.request();
+    }
+  });
   runApp(MyApp());
 }
 

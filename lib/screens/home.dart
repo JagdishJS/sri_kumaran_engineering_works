@@ -104,11 +104,13 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                Get.toNamed("sampleInvoice");
+              onPressed: () async {
+                var data = await commonController.getAccessToken(
+                    "Invoice", "Sample Invoice Screen openned.");
+                // Get.toNamed("sampleInvoice");
               },
-              foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-              backgroundColor: Theme.of(context).cardColor,
+              foregroundColor: charcoal,
+              backgroundColor: celodon,
               child: Icon(Icons.add_circle_outline_outlined),
             ),
             floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,

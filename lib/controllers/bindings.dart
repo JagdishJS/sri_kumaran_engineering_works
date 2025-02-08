@@ -8,5 +8,6 @@ class GlobalBinding extends Bindings {
     Get.lazyPut<EquipmentsController>(() => EquipmentsController(),
         fenix: true);
     Get.lazyPut<OrdersController>(() => OrdersController(), fenix: true);
+    Get.lazyPut<StorageController>(() => StorageController(), fenix: true);
   }
 }

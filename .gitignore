@@ -33,6 +33,7 @@ migrate_working_dir/
 .pub/
 /build/
 /android/app/google-services.json
+sri-kumaran-ew-firebase-adminsdk-fbsvc-489aa90508.json
 
 # Symbolication related
 app.*.symbols
